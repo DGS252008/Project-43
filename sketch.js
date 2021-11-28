@@ -1,13 +1,28 @@
-var hr = hour();
-var mn = minute();
-var sc = seconds();
+var scAngle, mnAngle, hrAngle;
 
 function setup() {
-  createCanvas(800,400);
-  createSprite(400, 200, 50, 50);
+  createCanvas(600, 600);
+  hr = hour();
+  mn = minute();
+  sc = second();
+  
+  angleMode(DEGREES)
+
+  //createSprite(400, 200, 50, 50);
 }
 
 function draw() {
-  background(255,255,255);  
+  background(0);  
+  scAngle = map(sc, 0, 60, 0, 360);
+  mnAngle = map(mn, 0, 60, 0, 360);
+  hrAngle = map(hr, 0, 60, 0, 360);
+
+  //second hand
+  push();
+  rotate(scAngle);
+  stroke('#FFF07C');
+  strokeWeight(7);
+  line(400, 300, 300, 100);
+  pop();
   drawSprites();
 }
